@@ -57,6 +57,9 @@ class Settings(BaseSettings):
     enable_snapshot_management: bool = os.getenv("ENABLE_SNAPSHOT_MANAGEMENT", "true").lower() == "true"
     enable_pdf_upload: bool = os.getenv("ENABLE_PDF_UPLOAD", "true").lower() == "true"
 
+    # API documentation toggle
+    docs_enabled: bool = os.getenv("DOCS_ENABLED", "true").lower() == "true"
+
     # Snapshot storage directory (shared volume with Qdrant)
     snapshot_dir: str = os.getenv("SNAPSHOT_DIR", "/app/snapshots")
 
