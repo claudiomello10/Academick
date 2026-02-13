@@ -7,7 +7,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Copy package files
-COPY services/academick-frontend/package.json services/academick-frontend/package-lock.json* ./
+COPY services/frontend/package.json services/frontend/package-lock.json* ./
 
 # Install dependencies
 RUN npm ci --legacy-peer-deps
@@ -20,7 +20,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 
 # Copy source code
-COPY services/academick-frontend/ .
+COPY services/frontend/ .
 
 # Set environment variables for build
 ENV NEXT_TELEMETRY_DISABLED=1

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="services/frontend/public/app_icon.png" alt="AcademiCK Logo" width="200"/>
+</p>
+
 # AcademiCK
 
 **A self-hosted, RAG-powered study assistant for any academic subject.**

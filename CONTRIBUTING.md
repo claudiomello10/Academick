@@ -76,7 +76,7 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 
 # Run frontend locally
-cd services/academick-frontend
+cd services/frontend
 npm install
 npm run dev
 ```
@@ -102,8 +102,7 @@ Academick/
 │   ├── embedding-service/      # BGE-M3 embedding model server
 │   ├── intent-service/         # Query intent classification
 │   ├── pdf-service/            # PDF processing with Celery workers
-│   ├── frontend/               # Next.js Dockerfile
-│   └── academick-frontend/     # Next.js frontend source code
+│   └── frontend/               # Next.js frontend (Dockerfile + source code)
 ├── scripts/                    # Database schema, migration scripts
 ├── config/                     # Nginx reverse proxy config
 ├── docs/                       # Detailed documentation
@@ -125,9 +124,9 @@ Academick/
 
 | File | Purpose |
 |------|---------|
-| `services/academick-frontend/components/StudentHelper.tsx` | Main chat interface |
-| `services/academick-frontend/components/AdminDashboard.tsx` | Admin panel |
-| `services/academick-frontend/config/constants.ts` | API endpoint configuration |
+| `services/frontend/components/StudentHelper.tsx` | Main chat interface |
+| `services/frontend/components/AdminDashboard.tsx` | Admin panel |
+| `services/frontend/config/constants.ts` | API endpoint configuration |
 
 ## How to Contribute
 
