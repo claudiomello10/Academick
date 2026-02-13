@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     )
 
     # Redis
-    redis_url: str = os.getenv("REDIS_URL", "redis://:change_this_redis_password@localhost:6379/0")
+    redis_url: str = os.getenv("REDIS_URL", "redis://localhost:6379/0")
 
     # Qdrant
     qdrant_host: str = os.getenv("QDRANT_HOST", "localhost")
