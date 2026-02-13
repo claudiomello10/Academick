@@ -1,0 +1,12 @@
+Livros/
+__pycache__/
+.*
+temp*
+*.pkl
+*.db
+!.env.example
+!.github/
+!.gitignore
+*.snapshot
+*.checksum
+/data/qdrant_snapshots/
