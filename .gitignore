@@ -1,0 +1,6 @@
+__pycache__/
+data/
+books/
+.*
+!.gitignore
+!.env.example
