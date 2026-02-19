@@ -33,7 +33,7 @@ Please do **not** open a public GitHub issue for security vulnerabilities.
 
 ### Required Before Production
 
-1. **Set all credentials in `.env`** — the system will refuse to start without them:
+1. **Set all credentials in `.env`** — both `docker compose` and the application-level config enforce fail-fast: the system will refuse to start without them:
 
    - `POSTGRES_PASSWORD`
    - `REDIS_PASSWORD`
@@ -49,6 +49,6 @@ Please do **not** open a public GitHub issue for security vulnerabilities.
 
 - **No exposed ports** — only nginx (port 80) is exposed to the host. All internal services (PostgreSQL, Redis, Qdrant, API gateway, microservices) communicate exclusively over the Docker bridge network.
 - **Redis authentication** — Redis requires a password via `--requirepass`. All services authenticate using the `REDIS_PASSWORD` environment variable.
-- **Fail-fast credentials** — `docker compose` will refuse to start if any required credential is missing from `.env`, preventing accidental deployment with empty or default passwords.
+- **Fail-fast credentials** — credential enforcement is applied at two layers: `docker compose` will refuse to start if any required credential is missing from `.env`, and the Python services themselves will raise a `RuntimeError` on startup if a required environment variable is absent. This means running services directly (outside `docker compose`) also requires all credentials to be exported in the environment.
 - **PDF upload validation** — uploads are validated by file extension, file size (configurable via `MAX_UPLOAD_SIZE_MB`), and MIME type (magic bytes).
 - **Nginx hardening** — security headers (`X-Frame-Options`, `X-Content-Type-Options`, `X-XSS-Protection`), rate limiting, and blocked documentation endpoints.
