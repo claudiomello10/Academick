@@ -95,9 +95,16 @@ class LLMService:
                 messages=messages,
                 max_completion_tokens=max_tokens,
             )
+            content = response.choices[0].message.content
+            if not content:
+                logger.warning(
+                    f"OpenAI returned empty content: model={model}, "
+                    f"finish_reason={response.choices[0].finish_reason}, "
+                    f"usage={response.usage}"
+                )
             usage = response.usage
             return {
-                "text": response.choices[0].message.content,
+                "text": content or "",
                 "total_tokens": usage.total_tokens if usage else None,
                 "prompt_tokens": usage.prompt_tokens if usage else None,
                 "completion_tokens": usage.completion_tokens if usage else None,
@@ -136,9 +143,16 @@ class LLMService:
                 messages=user_messages,
                 temperature=temperature
             )
+            content = response.content[0].text if response.content else None
+            if not content:
+                logger.warning(
+                    f"Anthropic returned empty content: model={model}, "
+                    f"stop_reason={response.stop_reason}, "
+                    f"usage={response.usage}"
+                )
             usage = response.usage
             return {
-                "text": response.content[0].text,
+                "text": content or "",
                 "total_tokens": (usage.input_tokens + usage.output_tokens) if usage else None,
                 "prompt_tokens": usage.input_tokens if usage else None,
                 "completion_tokens": usage.output_tokens if usage else None,
@@ -173,9 +187,16 @@ class LLMService:
                 temperature=temperature,
                 max_tokens=max_tokens
             )
+            content = response.choices[0].message.content
+            if not content:
+                logger.warning(
+                    f"DeepSeek returned empty content: model={model}, "
+                    f"finish_reason={response.choices[0].finish_reason}, "
+                    f"usage={response.usage}"
+                )
             usage = response.usage
             return {
-                "text": response.choices[0].message.content,
+                "text": content or "",
                 "total_tokens": usage.total_tokens if usage else None,
                 "prompt_tokens": usage.prompt_tokens if usage else None,
                 "completion_tokens": usage.completion_tokens if usage else None,
