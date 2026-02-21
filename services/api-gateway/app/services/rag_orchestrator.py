@@ -193,7 +193,7 @@ class RAGOrchestrator:
         intent = intent_result.get("intent", "question_answering")
 
         # Adjust top_k based on intent
-        top_k = 12 if intent == "searching_for_information" else 6
+        top_k = settings.top_k_searching if intent == "searching_for_information" else settings.top_k_default
 
         # Wait for enhanced queries
         enhanced_queries = await enhanced_queries_task

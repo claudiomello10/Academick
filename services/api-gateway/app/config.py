@@ -72,6 +72,10 @@ class Settings(BaseSettings):
     # Maximum completion tokens for LLM responses (includes reasoning + output)
     llm_max_tokens: int = int(os.getenv("LLM_MAX_TOKENS", "16384"))
 
+    # Top-K retrieval results per intent
+    top_k_searching: int = int(os.getenv("TOP_K_SEARCHING", "10"))
+    top_k_default: int = int(os.getenv("TOP_K_DEFAULT", "6"))
+
     # Default subject for new sessions
     default_subject: str = os.getenv("DEFAULT_SUBJECT", "Machine Learning")
 
