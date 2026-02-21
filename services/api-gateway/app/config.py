@@ -76,6 +76,16 @@ class Settings(BaseSettings):
     top_k_searching: int = int(os.getenv("TOP_K_SEARCHING", "10"))
     top_k_default: int = int(os.getenv("TOP_K_DEFAULT", "6"))
 
+    # Search weights per intent (dense vs sparse)
+    search_weight_qa_dense: float = float(os.getenv("SEARCH_WEIGHT_QA_DENSE", "0.6"))
+    search_weight_qa_sparse: float = float(os.getenv("SEARCH_WEIGHT_QA_SPARSE", "0.4"))
+    search_weight_summarization_dense: float = float(os.getenv("SEARCH_WEIGHT_SUMMARIZATION_DENSE", "0.7"))
+    search_weight_summarization_sparse: float = float(os.getenv("SEARCH_WEIGHT_SUMMARIZATION_SPARSE", "0.3"))
+    search_weight_coding_dense: float = float(os.getenv("SEARCH_WEIGHT_CODING_DENSE", "0.4"))
+    search_weight_coding_sparse: float = float(os.getenv("SEARCH_WEIGHT_CODING_SPARSE", "0.6"))
+    search_weight_searching_dense: float = float(os.getenv("SEARCH_WEIGHT_SEARCHING_DENSE", "0.5"))
+    search_weight_searching_sparse: float = float(os.getenv("SEARCH_WEIGHT_SEARCHING_SPARSE", "0.5"))
+
     # Default subject for new sessions
     default_subject: str = os.getenv("DEFAULT_SUBJECT", "Machine Learning")
 
